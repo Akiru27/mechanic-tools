@@ -602,22 +602,27 @@ footer .update-contact{
   font-weight:800;
   background:var(--yellow);
 }
+/* アップグレード料金表は見出し横に集約 */
+.upgrade-price-guide{
+  display:inline-block;
+  margin-left:8px;
+  font-size:10px;
+  font-weight:600;
+  color:#7d6f35;
+  letter-spacing:.01em;
+  white-space:nowrap;
+}
 .upgrade-mini-body{
   padding:7px 9px;
 }
 .tier-control{
   display:flex;
   align-items:center;
+  justify-content:flex-end;
   gap:6px;
 }
 .tier-control select{
   min-width:92px;
-}
-.tier-prices{
-  font-size:9px;
-  line-height:1.3;
-  color:#a0a5ae;
-  white-space:nowrap;
 }
 .subsection-label{
   margin:8px 2px 3px;
@@ -739,6 +744,38 @@ footer .update-contact{
   cursor:pointer;
   flex:0 0 auto;
 }
+#craft .craft-tier-list{
+  display:none;
+  grid-column:1 / -1;
+  grid-template-columns:repeat(auto-fit,minmax(92px,1fr));
+  gap:5px;
+  margin-top:4px;
+  padding:6px 2px 2px;
+  border-top:1px dashed #eee;
+}
+#craft .craft-tier-list.open{
+  display:grid;
+}
+#craft .craft-tier-entry{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:5px;
+  padding:4px 5px;
+  border:1px solid #edf0f4;
+  border-radius:8px;
+  background:#fafbfc;
+  font-size:10px;
+  color:#777;
+  white-space:nowrap;
+}
+#craft .craft-tier-entry input{
+  width:45px;
+  padding:4px 3px;
+  font-size:10px;
+  text-align:center;
+}
+
 #craft .craft-detail{
   display:none;
   align-items:center;
@@ -875,7 +912,7 @@ footer .update-contact{
         <div class="repair-box-body">
 
           <div class="row">
-            <div class="label">修理 <span class="mini-price">1回 ¥200,000</span></div>
+            <div class="label">修理 <span class="mini-price">1か所 ¥200,000</span></div>
             <div class="control"><input id="repairCount" type="number" min="0" step="1" value="0"></div>
           </div>
 
@@ -908,7 +945,7 @@ footer .update-contact{
         <div class="repair-box-body">
 
           <div class="row">
-            <div class="label">カスタム <span class="mini-price">1個 ¥400,000</span></div>
+            <div class="label">カスタム <span class="mini-price">1か所 ¥400,000</span></div>
             <div class="control"><input id="customCount" type="number" min="0" step="1" value="0"></div>
           </div>
 
@@ -929,7 +966,7 @@ footer .update-contact{
 
       <!-- アップグレード：左右2つ -->
       <div class="repair-box repair-upgrade sec-yellow">
-        <div class="repair-box-title">💛 アップグレード</div>
+        <div class="repair-box-title">💛 アップグレード <span class="upgrade-price-guide">T1 ¥500,000 ・ T2 ¥800,000 ・ T3 ¥6,750,000 ・ T4 ¥9,000,000 ・ T5 ¥12,000,000　｜　サスペンション 一律 ¥4,500,000</span></div>
         <div class="repair-box-body upgrade-columns">
 
           <div class="upgrade-mini">
@@ -938,19 +975,19 @@ footer .update-contact{
 
               <div class="row">
                 <div class="label">エンジン</div>
-                <div class="control tier-control"><select id="engineTier"></select><span class="tier-prices" id="enginePrices"></span></div>
+                <div class="control tier-control"><select id="engineTier"></select></div>
               </div>
               <div class="row">
                 <div class="label">ブレーキ</div>
-                <div class="control tier-control"><select id="brakeTier"></select><span class="tier-prices" id="brakePrices"></span></div>
+                <div class="control tier-control"><select id="brakeTier"></select></div>
               </div>
               <div class="row">
                 <div class="label">トランスミッション</div>
-                <div class="control tier-control"><select id="transTier"></select><span class="tier-prices" id="transPrices"></span></div>
+                <div class="control tier-control"><select id="transTier"></select></div>
               </div>
               <div class="row">
                 <div class="label">サスペンション</div>
-                <div class="control tier-control"><select id="suspTier"></select><span class="tier-prices" id="suspPrices"></span></div>
+                <div class="control tier-control"><select id="suspTier"></select></div>
               </div>
               <div class="checkrow">
                 <span>🛡️ アーマー <span class="mini-price">¥11,250,000</span></span>
@@ -970,23 +1007,23 @@ footer .update-contact{
 
               <div class="row">
                 <div class="label">オイルポンプ</div>
-                <div class="control tier-control"><select id="oilPumpTier"></select><span class="tier-prices" id="oilPumpPrices"></span></div>
+                <div class="control tier-control"><select id="oilPumpTier"></select></div>
               </div>
               <div class="row">
                 <div class="label">ドライブシャフト</div>
-                <div class="control tier-control"><select id="driveShaftTier"></select><span class="tier-prices" id="driveShaftPrices"></span></div>
+                <div class="control tier-control"><select id="driveShaftTier"></select></div>
               </div>
               <div class="row">
                 <div class="label">シリンダーヘッド</div>
-                <div class="control tier-control"><select id="cylinderHeadTier"></select><span class="tier-prices" id="cylinderHeadPrices"></span></div>
+                <div class="control tier-control"><select id="cylinderHeadTier"></select></div>
               </div>
               <div class="row">
                 <div class="label">バッテリーケーブル</div>
-                <div class="control tier-control"><select id="batteryCableTier"></select><span class="tier-prices" id="batteryCablePrices"></span></div>
+                <div class="control tier-control"><select id="batteryCableTier"></select></div>
               </div>
               <div class="row">
                 <div class="label">フューエルタンク</div>
-                <div class="control tier-control"><select id="fuelTankTier"></select><span class="tier-prices" id="fuelTankPrices"></span></div>
+                <div class="control tier-control"><select id="fuelTankTier"></select></div>
               </div>
               <div class="checkrow">
                 <span>🪢 ハーネス <span class="mini-price">¥4,000,000</span></span>
@@ -2983,16 +3020,27 @@ function craftLabel(text){
 
 function makeTierItem(item,index){
   const id = `tier_${item.key}`;
-  const selectId = `${id}_select`;
-  const qtyId = `${id}_qty`;
 
-  let options = "";
+  let inputs = "";
   for(let t=1;t<=item.max;t++){
-    options += `<option value="${t}">Tier ${t}</option>`;
+    inputs += `
+      <label class="craft-tier-entry">
+        <span>Tier ${t}</span>
+        <input
+          type="number"
+          class="craft-qty tier-qty"
+          min="0"
+          step="1"
+          value=""
+          placeholder="0"
+          data-item="${item.key}"
+          data-tier="${t}">
+      </label>
+    `;
   }
 
   return `
-    <div class="craft-item" data-craft-item="${item.key}">
+    <div class="craft-item craft-tier-item" data-craft-item="${item.key}">
       <div class="craft-name" title="${craftLabel(item.name)}">
         ${craftLabel(item.name)}
       </div>
@@ -3003,26 +3051,10 @@ function makeTierItem(item,index){
           class="craft-check tier-check"
           id="${id}_check"
           aria-label="${craftLabel(item.name)}を使用">
+      </div>
 
-        <div class="craft-detail" id="${id}_detail">
-          <select
-            class="craft-tier"
-            id="${selectId}"
-            data-item="${item.key}"
-            data-prefix="${craftLabel(item.recipePrefix)}">
-            ${options}
-          </select>
-
-          <input
-            type="number"
-            class="craft-qty tier-qty"
-            id="${qtyId}"
-            min="0"
-            step="1"
-            value=""
-            placeholder="個数"
-            data-item="${item.key}">
-        </div>
+      <div class="craft-tier-list" id="${id}_detail">
+        ${inputs}
       </div>
     </div>
   `;
@@ -3072,9 +3104,9 @@ function renderCraftInputs(){
     <div class="craft-section-note">☑ 選ぶとTier・個数を入力</div>
   `;
 
-  /* アップグレードパーツ*/
+  /* アップグレードパーツ */
   upgradeEl.innerHTML = `
-    ${noteTier}
+    ${noteTier.replace("☑ 選ぶとTier・個数を入力","☑ チェックすると全Tierの個数入力欄が開きます")}
     <div class="craft-grid">
       ${UPGRADE_ORDER.map(makeUpgradeItem).join("")}
     </div>
@@ -3106,7 +3138,8 @@ function renderCraftInputs(){
 
   document.querySelectorAll(".tier-check").forEach(check=>{
     check.addEventListener("change",()=>{
-      const detail = check.parentElement.querySelector(".craft-detail");
+      const item = check.closest(".craft-tier-item");
+      const detail = item?.querySelector(".craft-tier-list");
       if(detail){
         detail.classList.toggle("open",check.checked);
       }
@@ -3134,30 +3167,28 @@ function calcCraft(){
 
   // Tierあり
   document.querySelectorAll(".tier-check").forEach(check=>{
-
     if(!check.checked) return;
 
-    const detail = check.parentElement.querySelector(".craft-detail");
-    const select = detail?.querySelector(".craft-tier");
-    const qtyInput = detail?.querySelector(".tier-qty");
+    const item = check.closest(".craft-tier-item");
+    if(!item) return;
 
-    const qty = Math.max(0, Number(qtyInput?.value) || 0);
-    if(!qty || !select) return;
-
-    const tier = Number(select.value);
-    const item = select.dataset.item;
-
-    const group = TIER_GROUPS.find(x=>x.key===item);
+    const itemKey = item.dataset.craftItem;
+    const group = TIER_GROUPS.find(x=>x.key===itemKey);
     if(!group) return;
 
-    const recipeKey = `${group.recipePrefix}${tier}`;
-    const recipe = MATERIALS[recipeKey];
-    if(!recipe) return;
+    item.querySelectorAll(".tier-qty").forEach(qtyInput=>{
+      const qty = Math.max(0, Number(qtyInput.value) || 0);
+      if(!qty) return;
 
-    Object.entries(recipe).forEach(([mat,n])=>{
-      totals[mat] = (totals[mat]||0) + n * qty;
+      const tier = Number(qtyInput.dataset.tier);
+      const recipeKey = `${group.recipePrefix}${tier}`;
+      const recipe = MATERIALS[recipeKey];
+      if(!recipe) return;
+
+      Object.entries(recipe).forEach(([mat,n])=>{
+        totals[mat] = (totals[mat]||0) + n * qty;
+      });
     });
-
   });
 
   // Tierなし・ツール・カスタム
@@ -3225,7 +3256,7 @@ document.getElementById("craftReset").addEventListener("click",()=>{
   document.querySelectorAll(".tier-check").forEach(check=>{
     check.checked = false;
 
-    const detail = check.parentElement.querySelector(".craft-detail");
+    const detail = check.closest(".craft-tier-item")?.querySelector(".craft-tier-list");
     if(detail) detail.classList.remove("open");
   });
 
@@ -3233,9 +3264,6 @@ document.getElementById("craftReset").addEventListener("click",()=>{
     input.value = "";
   });
 
-  document.querySelectorAll(".craft-tier").forEach(select=>{
-    select.value = "1";
-  });
 
   calcCraft();
 
